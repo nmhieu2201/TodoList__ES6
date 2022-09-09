@@ -55,8 +55,7 @@ const showTask = () => {
         <i style="cursor: pointer" onclick="handleDeleleItem('${index}')"; class="fa-solid fa-trash-can"></i>
         <i style="color:green ;"  onclick="handleCheckItem('${ele.id}');"  class="fa-solid fa-circle-check"></i>
         </div>
-      </li>
-      `;
+      </li>`;
     } else {
       newTag += `
       <li>
@@ -65,14 +64,11 @@ const showTask = () => {
           <i style="cursor: pointer" onclick="handleDeleleItem('${index}')"; class="fa-solid fa-trash-can"></i>
           <i style="cursor: pointer" onclick="handleCheckItem('${ele.id}');" class="fa-regular fa-circle-check"></i>
           </div>
-      </li>
-
-  `;
+      </li>`;
     }
   });
   todoList.innerHTML = newTag;
   todoCompleted.innerHTML = completedTask;
-  console.log(completedTask);
   inputBox.value = "";
 };
 showTask();
@@ -84,12 +80,11 @@ const handleDeleleItem = (index) => {
   showTask();
 };
 const handleCheckItem = (id) => {
-  console.log(id);
   listArr.forEach((el) => {
     if (el.id === id) {
       el.checked = !el.checked;
     }
   });
-  console.log(listArr);
+  localStorage.setItem("todo", JSON.stringify(listArr));
   showTask();
 };
