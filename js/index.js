@@ -49,7 +49,7 @@ const showTask = () => {
   listArr.forEach((ele, index) => {
     if (ele.checked) {
       completedTask += `
-      <li>
+      <li style="color:green;">
         ${ele.task}
         <div class="icon">
         <i style="cursor: pointer" onclick="handleDeleleItem('${index}')"; class="fa-solid fa-trash-can"></i>
@@ -86,5 +86,15 @@ const handleCheckItem = (id) => {
     }
   });
   localStorage.setItem("todo", JSON.stringify(listArr));
+  showTask();
+};
+document.querySelector("#two").onclick = () => {
+ const result= _.orderBy(listArr, ["task", "id"], ["asc"]);
+  localStorage.setItem("todo", JSON.stringify(result));
+  showTask();
+};
+document.querySelector("#three").onclick = () => {
+  const result = _.orderBy(listArr, ["task", "id"], ["desc"]);
+  localStorage.setItem("todo", JSON.stringify(result));
   showTask();
 };
